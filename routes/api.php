@@ -27,3 +27,4 @@ Route::middleware('api')->group(function () {
     Route::resource('articles', ArticleController::class);
 });
 
+Route::get('/articles/art/pagination', [ArticleController::class, 'showArticlesPagination']);
