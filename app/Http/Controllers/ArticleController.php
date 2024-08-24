@@ -112,19 +112,9 @@ class ArticleController extends Controller
         
         // Retourne le résultat en format JSON API
         return response()->json([
-            'data' => $articles->items(), // Les articles paginés
-            'meta' => [
-                'current_page' => $articles->currentPage(),
-                'last_page' => $articles->lastPage(),
-                'per_page' => $articles->perPage(),
-                'total' => $articles->total(),
-            ],
-            'links' => [
-                'self' => $articles->url($articles->currentPage()),
-                'next' => $articles->nextPageUrl(),
-                'prev' => $articles->previousPageUrl(),
-            ],
-        ]);
+            'products' => $articles->items(), // Les articles paginés
+            'totalPages' =>  $articles->lastPage(), // Le nombre de pages
+              ]);
     }
     
 
