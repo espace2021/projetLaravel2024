@@ -59,6 +59,7 @@ class ArticleController extends Controller
     
         }
 
+        // Méthode de pagination et filtre
         public function showArticlesPagination(Request $request)
         {
      
@@ -88,5 +89,43 @@ class ArticleController extends Controller
      ]);
     
         }   
+
+
+    // Méthode de Pagination avec paginate
+    public function paginationPaginate()
+    {
+        $perPage = request()->input('pageSize', 2); // Récupère la valeur dynamique pour la pagination
+        
+        // Récupère le filtre par désignation depuis la requête
+        $filterDesignation = request()->input('filtre');
+        
+        // Construction de la requête
+        $query = Article::with('scategories');
+        
+        // Applique le filtre sur la désignation s'il est fourni
+        if ($filterDesignation) {
+            $query->where('designation', 'like', '%' . $filterDesignation . '%');
+        }
+        
+        // Paginer les résultats après avoir appliqué le filtre
+        $articles = $query->paginate($perPage);
+        
+        // Retourne le résultat en format JSON API
+        return response()->json([
+            'data' => $articles->items(), // Les articles paginés
+            'meta' => [
+                'current_page' => $articles->currentPage(),
+                'last_page' => $articles->lastPage(),
+                'per_page' => $articles->perPage(),
+                'total' => $articles->total(),
+            ],
+            'links' => [
+                'self' => $articles->url($articles->currentPage()),
+                'next' => $articles->nextPageUrl(),
+                'prev' => $articles->previousPageUrl(),
+            ],
+        ]);
+    }
+    
 
 }

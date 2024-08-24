@@ -31,6 +31,8 @@ Route::middleware('api')->group(function () {
 
 Route::get('/articles/art/pagination', [ArticleController::class, 'showArticlesPagination']);
 
+Route::get('/articles/art/paginationPaginate', [ArticleController::class, 'paginationPaginate']);
+
 Route::group([
     'middleware' => 'api',
     'prefix' => 'users'
