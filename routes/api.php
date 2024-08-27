@@ -11,6 +11,8 @@ use App\Http\Controllers\ArticleController;
 
 use App\Http\Controllers\AuthController;
 
+use App\Http\Controllers\StripeController;
+
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
@@ -53,3 +55,10 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
 Route::get('users/verify-email', [AuthController::class, 'verifyEmail'])->name('verify.email');
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'payment'
+], function ($router) {
+Route::post('/processpayment', [StripeController::class, 'processpayment']);
+});
