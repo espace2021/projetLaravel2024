@@ -4,9 +4,6 @@
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.6.0" }
     },
-    "build": {
-    "command": "apt-get install -y libssl1.0.0"
-    },
     "routes": [
         {
             "src": "/(.*)",
