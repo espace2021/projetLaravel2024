@@ -6,8 +6,8 @@
     },
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
+      "source": "/api/(.*)",
+      "destination": "/public/api/$1"
         }
     ],
     "env": {
