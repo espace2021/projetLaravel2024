@@ -5,20 +5,20 @@
         "api/index.php": { "runtime": "vercel-php@0.6.0" }
     },
     "headers": [
-    {
-      "source": "/frontend/assets/(.*)",
-      "headers": [
         {
-          "key": "Content-Type",
-          "value": "application/javascript"
+            "source": "/frontend/assets/(.*)",
+            "headers": [
+                {
+                    "key": "Content-Type",
+                    "value": "application/javascript"
+                }
+            ]
         }
-      ]
-    }
     ],
-    "routes": [
+    "rewrites": [
         {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
+            "source": "/(.*)",
+            "destination": "/api/index.php"
         }
     ],
     "env": {
@@ -38,11 +38,11 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
 
-        "DB_CONNECTION":"mysql",
-        "DB_HOST":"mysql-8b83319-myproj2024.g.aivencloud.com",
-        "DB_PORT":"17970",
-        "DB_DATABASE":"ecommerce",
-        "DB_USERNAME":"avnadmin",
-        "DB_PASSWORD":"AVNS_PtbKjquP6UCJ7bxkYit"
+        "DB_CONNECTION": "mysql",
+        "DB_HOST": "mysql-8b83319-myproj2024.g.aivencloud.com",
+        "DB_PORT": "17970",
+        "DB_DATABASE": "ecommerce",
+        "DB_USERNAME": "avnadmin",
+        "DB_PASSWORD": "AVNS_PtbKjquP6UCJ7bxkYit"
     }
 }
