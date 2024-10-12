@@ -1,5 +1,9 @@
 {
     "version": 2,
+    "public": "public",
+    "builds": [
+      { "src": "public/frontend/assets/*", "use": "@vercel/static" }
+    ],
     "framework": null,
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.6.0" }
@@ -16,11 +20,9 @@
         }
     ],
     "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/api/index.php"
-        }
-    ],
+        { "source": "/frontend/assets/(.*)", "destination": "/public/frontend/assets/$1" },
+        { "source": "/(.*)", "destination": "/api/index.php" }
+      ],
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
