@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",                   
         "build": "vite build",             
-        "start": "php artisan serve --host=0.0.0.0 --port=3000" 
+        "start": "php artisan serve" 
     },
     "devDependencies": {
         "axios": "^1.6.4",
