@@ -2,11 +2,10 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "start": "php artisan serve --host=0.0.0.0 --port=3000",
-        "dev": "npm run development",
-        "build": "npm run production",
-        "production": "npm run prod"
-      },
+        "dev": "vite",                   
+        "build": "vite build",             
+        "start": "php artisan serve --host=0.0.0.0 --port=3000" 
+    },
     "devDependencies": {
         "axios": "^1.6.4",
         "laravel-vite-plugin": "^1.0",
