@@ -3,8 +3,5 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/{any}', function () {
-    if (File::exists(public_path($_SERVER["REQUEST_URI"]))) {
-        return File::get(public_path($_SERVER["REQUEST_URI"]));
-    }
-    return view('welcome'); 
+      return view('welcome'); 
 })->where('any', '.*');
