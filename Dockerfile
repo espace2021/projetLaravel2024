@@ -1,7 +1,21 @@
 # Utiliser l'image officielle PHP avec Apache
 FROM php:8.2-apache
 
-# Installer les dépendances requises pour Laravel
+# Installer les dépendances système requises
+RUN apt-get update && apt-get install -y \
+    libonig-dev \
+    libzip-dev \
+    libicu-dev \
+    libxml2-dev \
+    libpq-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libssl-dev \
+    zip \
+    unzip
+
+# Installer les extensions PHP requises
 RUN docker-php-ext-install pdo pdo_mysql mbstring tokenizer bcmath opcache
 
 # Installer Composer
@@ -10,10 +24,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Définir le répertoire de travail
 WORKDIR /var/www/html
 
-# Copier uniquement le répertoire public de Laravel
-COPY ./public /var/www/html
-
-# Copier le reste des fichiers Laravel
+# Copier les fichiers du projet Laravel
 COPY . /var/www/laravel
 
 # Installer les dépendances PHP (sans scripts pour alléger)
