@@ -4,13 +4,7 @@
   "functions": {
       "api/index.php": { "runtime": "vercel-php@0.6.0" }
   },
-  "headers": [
-    {
-      "name": "Content-Security-Policy",
-      "value": "default-src 'self'; img-src 'self' http://res.cloudinary.com;"
-    }
-  ],
-  "routes": [
+   "routes": [
     {
       "src": "/frontend/(.*)",
       "dest": "/public/frontend/$1"
