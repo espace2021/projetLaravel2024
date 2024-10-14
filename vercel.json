@@ -7,16 +7,15 @@
   "routes": [
     {
       "src": "/frontend/(.*)",
+      "headers": {
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
       "dest": "/public/frontend/$1"
     },
     {
       "src": "/(.*)",
-      "headers": {
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
-      },
-      "dest": "/api/index.php",
-      "status": 301
-    }
+      "dest": "/api/index.php"
+     }
   ],
   "env": {
     "APP_ENV": "production",
