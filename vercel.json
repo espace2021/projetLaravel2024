@@ -7,19 +7,11 @@
    "routes": [
     {
       "src": "/frontend/(.*)",
-      "dest": "/public/frontend/$1",
-      "headers": {
-       "key": "Content-Security-Policy",
-       "value": "default-src 'self'; img-src 'self' https: http://res.cloudinary.com"
-      }
+      "dest": "/public/frontend/$1"
     },
     {
-       "src": "/(.*)",
-        "dest": "/api/index.php",
-        "headers": {
-          "key": "Content-Security-Policy",
-          "value": "default-src 'self'; img-src 'self' https: http://res.cloudinary.com"
-        }
+    "src": "/(.*)",
+          "dest": "/api/index.php"
     }
   ],
     "env": {
