@@ -14,8 +14,11 @@
     },
     {
       "src": "/(.*)",
+      "headers": {
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
       "dest": "/api/index.php"
-     }
+    }
   ],
   "env": {
     "APP_ENV": "production",
