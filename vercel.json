@@ -4,6 +4,16 @@
   "functions": {
     "api/index.php": { "runtime": "vercel-php@0.6.0" }
   },
+  "rewrites": [
+    {
+      "source": "/frontend/(.*)",
+      "destination": "/public/frontend/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/index.php"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -13,16 +23,6 @@
           "value": "default-src 'self'; img-src 'self' http://res.cloudinary.com"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/frontend/(.*)",
-      "destination": "/public/frontend/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/api/index.php"
     }
   ],
   "env": {
