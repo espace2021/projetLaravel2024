@@ -2,7 +2,7 @@
   "version": 2,
   "framework": null,
   "functions": {
-      "api/index.php": { "runtime": "vercel-php@0.6.0" }
+    "api/index.php": { "runtime": "vercel-php@0.6.0" }
   },
   "routes": [
     {
@@ -10,32 +10,36 @@
       "dest": "/public/frontend/$1"
     },
     {
-    "src": "/(.*)",
-          "dest": "/api/index.php"
+      "src": "/(.*)",
+      "headers": {
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+      },
+      "dest": "/api/index.php",
+      "status": 301
     }
   ],
-    "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "true",
-        "APP_URL": "https://vercel.com/espace2021s-projects",
-        "APP_KEY": "base64:a5aq7Z4YugBfX3esVkx8f6i7gY0+BdYbGY0VLj191Qo=",
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "true",
+    "APP_URL": "https://vercel.com/espace2021s-projects",
+    "APP_KEY": "base64:a5aq7Z4YugBfX3esVkx8f6i7gY0+BdYbGY0VLj191Qo=",
 
-        "APP_CONFIG_CACHE": "/tmp/config.php",
-        "APP_EVENTS_CACHE": "/tmp/events.php",
-        "APP_PACKAGES_CACHE": "/tmp/packages.php",
-        "APP_ROUTES_CACHE": "/tmp/routes.php",
-        "APP_SERVICES_CACHE": "/tmp/services.php",
-        "VIEW_COMPILED_PATH": "/tmp",
+    "APP_CONFIG_CACHE": "/tmp/config.php",
+    "APP_EVENTS_CACHE": "/tmp/events.php",
+    "APP_PACKAGES_CACHE": "/tmp/packages.php",
+    "APP_ROUTES_CACHE": "/tmp/routes.php",
+    "APP_SERVICES_CACHE": "/tmp/services.php",
+    "VIEW_COMPILED_PATH": "/tmp",
 
-        "CACHE_DRIVER": "array",
-        "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie",
+    "CACHE_DRIVER": "array",
+    "LOG_CHANNEL": "stderr",
+    "SESSION_DRIVER": "cookie",
 
-        "DB_CONNECTION":"mysql",
-        "DB_HOST":"mysql-8b83319-myproj2024.g.aivencloud.com",
-        "DB_PORT":"17970",
-        "DB_DATABASE":"ecommerce",
-        "DB_USERNAME":"avnadmin",
-        "DB_PASSWORD":"AVNS_PtbKjquP6UCJ7bxkYit"
-    }
+    "DB_CONNECTION": "mysql",
+    "DB_HOST": "mysql-8b83319-myproj2024.g.aivencloud.com",
+    "DB_PORT": "17970",
+    "DB_DATABASE": "ecommerce",
+    "DB_USERNAME": "avnadmin",
+    "DB_PASSWORD": "AVNS_PtbKjquP6UCJ7bxkYit"
+  }
 }
