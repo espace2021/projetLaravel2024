@@ -17,16 +17,16 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-/*
+
 Route::middleware('api')->group(function () {
     Route::resource('categories', CategorieController::class);
 });
-*/
+/*
 // Route protégée
 Route::group(['middleware' => ['auth:api']], function () {
     Route::resource('categories', CategorieController::class);
 });
-
+*/
 Route::middleware('api')->group(function () {
     Route::resource('scategories', ScategorieController::class);        
 });
