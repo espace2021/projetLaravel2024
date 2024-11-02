@@ -55,10 +55,13 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
 Route::get('users/verify-email', [AuthController::class, 'verifyEmail'])->name('verify.email');
-
+/*
 Route::group([
     'middleware' => 'api',
     'prefix' => 'payment'
 ], function ($router) {
 Route::post('/processpayment', [StripeController::class, 'processpayment']);
-});
+});*/
+//Route::post('/create-checkout-session', [StripeController::class, 'createCheckoutSession']);
+
+Route::post('/payment/processpayment', [StripeController::class, 'processPayment']);

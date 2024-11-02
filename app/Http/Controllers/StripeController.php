@@ -4,32 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Stripe\Stripe;
-use Stripe\Charge;
-
-use Exception;
+use Stripe\Checkout\Session;
 
 class StripeController extends Controller
 {
-   
-    public function processpayment(Request $request)
+
+public function processpayment (Request $request)
 {
-    Stripe::setApiKey('sk_test_51KtYRUD3HS4vNAwa7ANL32HQqRTywhV3JHWIp3BxAIHv04bWoz22aKlRs9Q1L6znSX2i5fu5i3Xkl9i2Goz7jAkC00LL0T3lTL');
-  
     try {
-        $charge = Charge::create([
-            'amount' => $request->amount,
-            'currency' => 'usd',
-            'description' => 'Paiement via Stripe', // Description facultative
-            'source' => $request->token, 
+        Stripe::setApiKey('sk_test_51KtYRUD3HS4vNAwa7ANL32HQqRTywhV3JHWIp3BxAIHv04bWoz22aKlRs9Q1L6znSX2i5fu5i3Xkl9i2Goz7jAkC00LL0T3lTL');
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => $request->line_items,
+            'mode' => 'payment',
+            'success_url' => $request->success_url,
+            'cancel_url' => $request->cancel_url,
         ]);
 
-        // Le paiement a réussi
-        return response()->json(['message'=>'Paid Successfully'], 200);
+        return response()->json(['id' => $session->id]);
         
     } catch (\Exception $e) {
-        return response()->json(['error' => $e->getMessage()], 400);
+        return response()->json(['error' => $e->getMessage()], 500);
     }
-}
-
-    
+}   
 }
