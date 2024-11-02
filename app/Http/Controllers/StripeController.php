@@ -12,7 +12,7 @@ class StripeController extends Controller
 public function processpayment (Request $request)
 {
     try {
-        Stripe::setApiKey('sk_test_51KtYRUD3HS4vNAwa7ANL32HQqRTywhV3JHWIp3BxAIHv04bWoz22aKlRs9Q1L6znSX2i5fu5i3Xkl9i2Goz7jAkC00LL0T3lTL');
+        Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
         $session = Session::create([
             'payment_method_types' => ['card'],

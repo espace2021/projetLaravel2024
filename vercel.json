@@ -36,6 +36,8 @@
         "DB_PORT":"17970",
         "DB_DATABASE":"ecommerce",
         "DB_USERNAME":"avnadmin",
-        "DB_PASSWORD":"AVNS_PtbKjquP6UCJ7bxkYit"
+        "DB_PASSWORD":"AVNS_PtbKjquP6UCJ7bxkYit",
+
+        "STRIPE_SECRET_KEY":"sk_test_51KtYRUD3HS4vNAwa7ANL32HQqRTywhV3JHWIp3BxAIHv04bWoz22aKlRs9Q1L6znSX2i5fu5i3Xkl9i2Goz7jAkC00LL0T3lTL"
     }
 }
